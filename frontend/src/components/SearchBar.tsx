@@ -4,6 +4,7 @@ import { Search, RotateCcw } from 'lucide-react';
 interface SearchBarProps {
   value: string;
   onChange: (val: string) => void;
+  placeholder?: string;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
