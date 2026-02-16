@@ -9,7 +9,7 @@ export const Navbar: React.FC = () => {
       {/* Left side: External Link */}
       <div className="flex-1">
         <a href="https://www.marcone.com" target="_blank" rel="noopener noreferrer">
-          <img src="/marcone.svg" alt="Marcone" className="h-6 opacity-70 hover:opacity-100 transition" />
+          <img src="/marcone.svg" alt="Marcone" className="h-6" />
         </a>
       </div>
 

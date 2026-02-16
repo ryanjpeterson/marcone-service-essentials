@@ -7,11 +7,12 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col h-screen bg-marcone-lightGrey overflow-hidden">
-      {/* Fixed Top Section */}
+    /* h-screen: Full height, relative: for children positioning */
+    /* bg-[url('/background.svg')]: Points to public folder, bg-fixed: stays still while scrolling */
+    /* bg-cover: covers entire area, bg-center: keeps it centered */
+    <div className="relative min-h-screen flex flex-col bg-[url('/background.svg')] bg-fixed bg-cover bg-center overflow-hidden">
       <Navbar />
 
-      {/* Main Content Area: This is where Sidebar + Grid will live */}
       <main className="flex flex-1 overflow-hidden relative">
         {children}
       </main>

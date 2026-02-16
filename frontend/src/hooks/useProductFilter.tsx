@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import productsData from '../data/data.json'; // Ensure data.json is in src/data
+import productsData from '../data/data.json'; 
 import type { Product, Language } from '../types/product';
 import { sanitizeString } from '../utils/search';
 
@@ -10,20 +10,18 @@ export const useProductFilter = (lang: Language) => {
 
   const filteredProducts = useMemo(() => {
     return (productsData as Product[]).filter((product) => {
-      // 1. Language-based Category Filtering
       const section = lang === 'en' ? product.sectionENG : product.sectionFRE;
       const subsection = lang === 'en' ? product.subsectionENG : product.subsectionFRE;
       
       const sectionMatch = selectedSections.length === 0 || selectedSections.includes(section);
       const subsectionMatch = selectedSubsections.length === 0 || selectedSubsections.includes(subsection);
 
-      // Inside the filteredProducts useMemo logic:
       const cleanQuery = sanitizeString(searchQuery);
-      const cleanPart = sanitizeString(product.partNumber);
+      // FIX: Ensure partNumber is a string before calling toLowerCase/sanitize
+      const cleanPart = sanitizeString(product.partNumber?.toString() || '');
 
-      // Safely get the description based on language
       const rawDescription = lang === 'en' ? product.descriptionENG : product.descriptionFRE;
-      const cleanDesc = sanitizeString(rawDescription);
+      const cleanDesc = sanitizeString(rawDescription || '');
 
       const searchMatch = !cleanQuery || cleanPart.includes(cleanQuery) || cleanDesc.includes(cleanQuery);
       
@@ -31,7 +29,6 @@ export const useProductFilter = (lang: Language) => {
     });
   }, [lang, searchQuery, selectedSections, selectedSubsections]);
 
-  // Extract unique categories for the Sidebar UI
   const categories = useMemo(() => {
     const sections = new Set<string>();
     const subBySection: Record<string, Set<string>> = {};
@@ -39,14 +36,18 @@ export const useProductFilter = (lang: Language) => {
     (productsData as Product[]).forEach(p => {
       const s = lang === 'en' ? p.sectionENG : p.sectionFRE;
       const sub = lang === 'en' ? p.subsectionENG : p.subsectionFRE;
-      sections.add(s);
-      if (!subBySection[s]) subBySection[s] = new Set();
-      subBySection[s].add(sub);
+      if (s) {
+        sections.add(s);
+        if (!subBySection[s]) subBySection[s] = new Set();
+        if (sub) subBySection[s].add(sub);
+      }
     });
 
     return { 
       sections: Array.from(sections).sort(), 
-      subBySection: Object.fromEntries(Object.entries(subBySection).map(([k, v]) => [k, Array.from(v).sort()]))
+      subBySection: Object.fromEntries(
+        Object.entries(subBySection).map(([k, v]) => [k, Array.from(v).sort()])
+      )
     };
   }, [lang]);
 

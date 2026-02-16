@@ -34,14 +34,14 @@ export const ProductExplorer: React.FC = () => {
   return (
     <div className="flex flex-1 overflow-hidden w-full">
       <Sidebar 
-        {...filterProps} 
+        {...filterProps} // Pass the spread props which now include subsections
         isOpen={isMobileSidebarOpen} 
         setIsOpen={setIsMobileSidebarOpen} 
-        lang={lang} 
+        lang={lang}
       />
 
       <div className="flex-1 flex flex-col min-w-0">
-        <div className="p-4 flex items-center gap-4 glass m-4 rounded-2xl shadow-sm">
+        <div className="flex items-center gap-4 px-4 py-2 w-full">
           <div className="flex-1">
             <SearchBar 
               value={filterProps.searchQuery} 

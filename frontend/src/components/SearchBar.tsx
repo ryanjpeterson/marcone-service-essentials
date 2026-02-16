@@ -7,17 +7,21 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
+export const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, placeholder }) => {
   return (
-    <div className="sticky top-0 z-10 bg-marcone-lightGrey p-4">
-      <div className="relative flex items-center max-w-2xl mx-auto">
+    /* Removed p-4 and bg-marcone-lightGrey to get rid of the grey overlay */
+    <div className="sticky top-0 z-10 p-4">
+      {/* max-w-none: allows it to take full space, flex-1: grows to available space */}
+      <div className="relative flex items-center w-full max-w-none">
         <Search className="absolute left-3 text-marcone-darkGrey" size={18} />
         <input 
           type="text"
-          placeholder="Search part number or description..."
+          placeholder={placeholder || "Search..."}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full pl-10 pr-12 py-3 rounded-lg border border-marcone-darkGrey/30 focus:border-marcone-red focus:ring-1 focus:ring-marcone-red outline-none shadow-sm"
+          /* grow: ensures the input expands horizontally */
+          /* glass: custom utility from your CSS for consistency */
+          className="grow w-full pl-10 pr-12 py-3 rounded-xl border border-white/20 glass outline-none shadow-md transition-all focus:ring-2 focus:ring-marcone-red/50"
         />
         {value && (
           <button 
