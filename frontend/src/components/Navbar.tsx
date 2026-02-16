@@ -8,9 +8,9 @@ export const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-30 w-full glass h-20 px-6 flex items-center justify-between border-b shadow-sm">
       {/* Left side: External Link */}
       <div className="flex-1">
-        <a href="https://www.marcone.com" target="_blank" rel="noopener noreferrer">
+        <div>
           <img src="/marcone.svg" alt="Marcone" className="h-6" />
-        </a>
+        </div>
       </div>
 
       {/* Center: Main Logo */}
