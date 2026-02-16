@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Title" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 301 124.82">
+  <defs>
+    <filter id="outer-glow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#000" flood-opacity="1"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <text transform="translate(15.79 89.14)" style="fill: #fff; filter: url(#outer-glow-1); font-family: GoboldLowplus, &apos;Gobold Lowplus&apos;; font-size: 56.53px;"><tspan x="0" y="0">L&apos;ESSENTIEL</tspan></text>
+  <text transform="translate(27.35 112.39) scale(1.25 1)" style="fill: #ed1c24; font-family: TrashHand, TrashHand; font-size: 40.87px;"><tspan x="0" y="0">pour le service</tspan></text>
+</svg>

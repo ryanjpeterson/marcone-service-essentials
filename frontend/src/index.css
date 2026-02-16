@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@theme {
+  /* This is the new way to define your brand colors in v4 */
+  --color-marcone-red: #d22640;
+  --color-marcone-light-grey: #F4F3F2;
+  --color-marcone-dark-grey: #777;
+}
+
+@layer base {
+  html, body, #root {
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-marcone-light-grey);
+    overflow: hidden;
+  }
+}
