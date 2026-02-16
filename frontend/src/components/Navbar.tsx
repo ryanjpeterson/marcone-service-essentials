@@ -7,7 +7,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav className="flex items-center justify-between px-6 py-3 bg-white border-b border-marcone-lightGrey h-16">
-      <a href="https://marcone.com" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.marcone.com" target="_blank" rel="noopener noreferrer">
         <img src="/marcone.svg" alt="Marcone" className="h-8" />
       </a>
       
