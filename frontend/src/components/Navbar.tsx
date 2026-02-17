@@ -5,7 +5,7 @@ export const Navbar: React.FC = () => {
   const { lang, setLanguage } = useLanguage();
 
   return (
-    <nav className="sticky top-0 z-30 w-full glass h-20 px-6 flex items-center justify-between border-b shadow-sm">
+    <nav className="sticky top-0 z-30 w-full bg-white h-20 px-6 flex items-center justify-between shadow-sm">
       {/* Left side: External Link */}
       <div className="flex-1">
         <div>
