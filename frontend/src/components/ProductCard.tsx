@@ -12,12 +12,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, lang }) => {
   const imageSrc = product.image ? `/parts/${product.image}` : '/placeholder.png';
 
   return (
-    <div className="glass rounded-2xl overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
-      {/* Image Container: Max 250px x 250px Square */}
-      <div className="aspect-square w-full max-w-[250px] mx-auto p-6 flex items-center justify-center bg-white/50 group-hover:bg-white transition-colors">
+    <div className="glass rounded-2xl overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 h-full">
+      {/* Image Container: Constrained to 250x250 square with a white background */}
+      <div className="aspect-square w-full max-h-[250px] mx-auto flex items-center justify-center bg-white p-6 transition-colors">
         <img 
           src={imageSrc} 
           alt={product.partNumber}
+          /* object-contain ensures the image fits within the bounds without being cropped */
           className="max-w-full max-h-full object-contain drop-shadow-sm"
           onError={(e) => { (e.target as HTMLImageElement).src = '/placeholder.png'; }}
         />

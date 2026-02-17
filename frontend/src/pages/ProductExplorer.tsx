@@ -61,7 +61,7 @@ export const ProductExplorer: React.FC = () => {
               <p className="font-medium text-slate-500">{strings.loading}</p>
             </div>
           ) : filterProps.filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
               {filterProps.filteredProducts.map((p, i) => (
                 <ProductCard key={`${p.partNumber}-${i}`} product={p} lang={lang} />
               ))}
